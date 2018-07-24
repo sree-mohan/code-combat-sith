@@ -1,5 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import './app/pure-css-checkbox';
+
 body {
     overflow-x: hidden;
+}
+
+.carousel-indicators {
+  bottom: -20px;
+  li {
+    background-color: rgba(0,0,0,0.2);
   }
+  li.active {
+    background-color: #23cf5f;
+  }
+}
+
+.form-control:focus {
+  border-color: #23cf5f;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(35, 207, 95, 0.6);
+}

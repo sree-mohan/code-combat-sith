@@ -73,8 +73,24 @@
 }
 
 .modal-body {
+    padding: 30px;
     .row {
         margin-bottom: 8px;
+    }
+    .btn {
+        color: #000;
+        font-weight: 600;
+        background: none;
+        border-radius: 0;
+        border: none;
+        margin-top: 16px;
+        padding-bottom: 8px;
+        &:disabled {
+            color: #656565;
+        }
+        &:hover {
+            border-bottom: 2px solid #23cf5f;
+        }
     }
 }
 
