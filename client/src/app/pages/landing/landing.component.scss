@@ -1,0 +1,85 @@
+@import '../../../styles.scss';
+
+.landing {
+    overflow-x: hidden;
+    height: 90vh;
+    .content-container {
+        font-family: 'Open Sans', sans-serif;
+        color: #fff;
+        margin: 120px 150px;
+        h5 {
+            line-height: 48px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 54px;
+            text-transform: uppercase;
+        }
+        & .emphasis {
+            font-weight: 600;
+        }
+        .openings {
+            margin: 70px 0 0px 10px;
+            font-size: 24px;
+            a {
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
+                &:hover {
+                    .material-icons {
+                        color: #23cf5f;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.jobs {
+    padding: 50px;
+    background: #fff; 
+    height: 100vh;
+    .content-container {
+        margin: 0 120px;
+        h1 {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+        }
+        .row {
+            margin-top: 50px;
+        }
+        .card {
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.075), 0 10px 10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,.05);
+            .card-text {
+                .row {
+                    margin-top: 42px;
+                }
+            }
+            .btn {
+                color: #000;
+                font-weight: 600;
+                background: none;
+                border-radius: 0;
+                border: none;
+                margin-top: 16px;
+                padding-bottom: 8px;
+                &:hover {
+                    border-bottom: 2px solid #23cf5f;
+                }
+            }
+        }
+    }
+}
+
+.modal-body {
+    .row {
+        margin-bottom: 8px;
+    }
+}
+
+.display-4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+}

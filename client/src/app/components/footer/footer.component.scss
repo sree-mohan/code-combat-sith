@@ -1,0 +1,9 @@
+@import '../../../styles.scss';
+
+.footer {
+   flex: 1;
+   flex-shrink: 0;
+   font-size: 0.75rem;
+   height: 10vh;
+   padding: 1.75rem;
+}

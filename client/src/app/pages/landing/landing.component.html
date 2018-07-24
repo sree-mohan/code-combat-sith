@@ -1,0 +1,97 @@
+<div class="landing">
+  <div class="content-container col-5">
+    <h5>Let's</h5>
+    <h5 class="emphasis">Build</h5>
+    <h5 class="emphasis">Great Products</h5>
+    <h5>Together.</h5>
+    <div class="row">
+      <div class="col openings">
+        <a href="#what">
+          View Current Openings
+          <i class="material-icons">arrow_downward</i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="what" class="jobs">
+  <div class="row">
+    <div class="content-container col-12">
+      <h1>Current Openings</h1>
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title display-4">Software Engineer</h5>
+              <div class="card-text">
+                You need to have atleast
+                <span class="font-weight-bold">three years</span> of experience in latest JavaScript technologies. You should also be able to write unit
+                tests and ensure good code quality.
+              </div>
+              <a (click)="openModal(template)" class="btn btn-primary float-right">Apply</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title display-4">UI/UX Designer</h5>
+              <div class="card-text">
+                You need to have atleast
+                <span class="font-weight-bold">two years</span> of experience in latest UI/UX design tools. You should also be able to create high-fidelity
+                mockups and wireframes according to requirements.
+              </div>
+              <a href="#" class="btn btn-primary float-right">Apply</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title display-4">Technical Lead</h5>
+              <div class="card-text">
+                You need to have atleast
+                <span class="font-weight-bold">six years</span> of experience in <span class="font-weight-bold">software development.</span>You should also be able to manage teams, ensure timely delivery and client expectations.
+              </div>
+              <a href="#" class="btn btn-primary float-right">Apply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form for application -->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left display-4">Software Engineer</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col">
+          <form [formGroup]="application">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Sam Daniel" formControlName="Name">
+            </div>                                                                                                 
+            <div class="form-group">
+              <label>Email</label>
+              <input type="text" class="form-control" placeholder="sam.daniel@mail.com" formControlName="Email">
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" class="form-control" formControlName="Phone">
+            </div>
+            <div class="form-group">
+              <label>Skills</label>
+              <input type="text" class="form-control" formControlName="Skills">
+            </div>                                                
+          </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
