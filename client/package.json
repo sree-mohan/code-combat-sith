@@ -21,9 +21,14 @@
     "@angular/platform-browser": "6.0.9",
     "@angular/platform-browser-dynamic": "6.0.9",
     "@angular/router": "6.0.9",
+    "@nicky-lenaers/ngx-scroll-to": "^1.0.0",
+    "@progress/kendo-angular-dropdowns": "^3.0.2",
+    "@progress/kendo-angular-l10n": "^1.2.0",
     "core-js": "^2.4.1",
     "ngx-bootstrap": "^3.0.1",
+    "ngx-type-ahead": "^2.0.0",
     "rxjs": "^6.2.2",
+    "rxjs-compat": "^6.2.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

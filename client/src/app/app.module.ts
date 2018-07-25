@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CarouselModule, ModalModule } from 'ngx-bootstrap';
+import { TypeaheadModule } from 'ngx-type-ahead';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { LandingComponent } from './pages/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RecruiterHomeComponent } from './pages/recruiter-home/recruiter-home.component';
+import { RecruiterListComponent } from './pages/recruiter-list/recruiter-list.component';
 
 
 @NgModule({
@@ -17,12 +21,16 @@ import { FooterComponent } from './components/footer/footer.component';
     AppComponent,
     LandingComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RecruiterHomeComponent,
+    RecruiterListComponent
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    TypeaheadModule,
     ModalModule.forRoot(),
     CarouselModule.forRoot(),
     AppRoutingModule

@@ -3,10 +3,14 @@ import {Routes, RouterModule} from '@angular/router';
 
 // Components
 import { LandingComponent } from './pages/landing/landing.component';
+import { RecruiterHomeComponent } from './pages/recruiter-home/recruiter-home.component';
+import { RecruiterListComponent } from './pages/recruiter-list/recruiter-list.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'landing', pathMatch: 'full'},
-  {path: 'landing', component: LandingComponent},
+  {path: '', redirectTo: 'candidate-home', pathMatch: 'full'},
+  {path: 'candidate-home', component: LandingComponent},
+  {path: 'recruiter-home', component: RecruiterHomeComponent},
+  {path: 'recruiter-list', component: RecruiterListComponent},
 ];
 
 @NgModule({

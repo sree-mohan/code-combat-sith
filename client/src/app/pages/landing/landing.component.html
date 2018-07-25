@@ -24,11 +24,33 @@
             <div class="card-body">
               <h5 class="card-title display-4">Software Engineer</h5>
               <div class="card-text">
-                You need to have atleast
-                <span class="font-weight-bold">three years</span> of experience in latest JavaScript technologies. You should also be able to write unit
-                tests and ensure good code quality.
+                <div class="row">
+                  <div class="col text-muted">
+                    2 - 3 years
+                  </div>
+                </div>
+                <div class="row mt-10">
+                  <div class="col-12 text-muted font-weight-bold">
+                    Need To Know
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 pull-right">
+                    Angular, React, JavaScript, NodeJS
+                  </div>
+                </div>
+                <div class="row mt-10">
+                  <div class="col-12 text-muted font-weight-bold">
+                    Good To Have
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 pull-right">
+                    Test Driven Development, Dev-Ops, CI/CD
+                  </div>
+                </div>
               </div>
-              <a (click)="openModal(template)" class="btn btn-primary float-right">Apply</a>
+              <a (click)="openModal(template)" class="btn btn-primary float-right">APPLY</a>
             </div>
           </div>
         </div>
@@ -37,11 +59,33 @@
             <div class="card-body">
               <h5 class="card-title display-4">UI/UX Designer</h5>
               <div class="card-text">
-                You need to have atleast
-                <span class="font-weight-bold">two years</span> of experience in latest UI/UX design tools. You should also be able to create high-fidelity
-                mockups and wireframes according to requirements.
-              </div>
-              <a href="#" class="btn btn-primary float-right">Apply</a>
+                  <div class="row">
+                    <div class="col text-muted">
+                      2 - 3 years
+                    </div>
+                  </div>
+                  <div class="row mt-10">
+                    <div class="col-12 text-muted font-weight-bold">
+                      Need To Know
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 pull-right">
+                      Photoshop, Illustrator, Adobe XD
+                    </div>
+                  </div>
+                  <div class="row mt-10">
+                    <div class="col-12 text-muted font-weight-bold">
+                      Good To Have
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 pull-right">
+                      Material Design, Sketch, Flutter, InVision Studio
+                    </div>
+                  </div>
+                </div>
+              <a href="#" class="btn btn-primary float-right">APPLY</a>
             </div>
           </div>
         </div>
@@ -50,11 +94,33 @@
             <div class="card-body">
               <h5 class="card-title display-4">Technical Lead</h5>
               <div class="card-text">
-                You need to have atleast
-                <span class="font-weight-bold">six years</span> of experience in
-                <span class="font-weight-bold">software development.</span>You should also be able to manage teams, ensure timely delivery and client expectations.
-              </div>
-              <a href="#" class="btn btn-primary float-right">Apply</a>
+                  <div class="row">
+                    <div class="col text-muted">
+                      8 - 10 years
+                    </div>
+                  </div>
+                  <div class="row mt-10">
+                    <div class="col-12 text-muted font-weight-bold">
+                      Need To Know
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 pull-right">
+                      SDLC and Project Management Skills
+                    </div>
+                  </div>
+                  <div class="row mt-10">
+                    <div class="col-12 text-muted font-weight-bold">
+                      Good To Have
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 pull-right">
+                      JIRA/Kanban Knowledge, Agile Methodologies
+                    </div>
+                  </div>
+                </div>
+              <a href="#" class="btn btn-primary float-right">APPLY</a>
             </div>
           </div>
         </div>
@@ -87,7 +153,8 @@
               </div>
               <div class="form-group">
                 <label>Skills</label>
-                <input type="text" class="form-control" formControlName="Skills">
+                <type-ahead [custom]="false" [multi]="true" [settings]="{tagClass: 'skills-badge'}" class="form-control" formControlName="Skills"
+                  [suggestions]="skills"></type-ahead>
               </div>
               <div class="form-group">
                 <label>Years of Experience</label>
@@ -122,16 +189,16 @@
                 <label [attr.for]="j">Are you willing to relocate to Bengaluru?</label>
               </div>
               <div class="form-group">
-                  <input class="styled-checkbox" [attr.id]="i" type="checkbox" name="statusCheckbox" formControlName="NoticePeriod">
-                  <label [attr.for]="i">Are you currently serving your notice period?</label>
+                <input class="styled-checkbox" [attr.id]="i" type="checkbox" name="statusCheckbox" formControlName="NoticePeriod">
+                <label [attr.for]="i">Are you currently serving your notice period?</label>
               </div>
               <div class="form-group">
-                <label>Expected Joining Date</label>
+                <label>Duration of Notice Period</label>
                 <input type="text" class="form-control" formControlName="JoiningTime">
               </div>
             </slide>
           </carousel>
-          <button [disabled]="application.invalid" class="btn btn-primary float-right">Submit</button>
+          <button (click)="test(application.value)" [disabled]="application.invalid" class="btn btn-primary float-right">SUBMIT</button>
         </form>
       </div>
     </div>

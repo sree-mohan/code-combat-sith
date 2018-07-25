@@ -6,8 +6,12 @@ body {
     overflow-x: hidden;
 }
 
+.carousel-control {
+  display: none;
+}
+
 .carousel-indicators {
-  bottom: -20px;
+  bottom: -40px;
   li {
     background-color: rgba(0,0,0,0.2);
   }
@@ -19,4 +23,13 @@ body {
 .form-control:focus {
   border-color: #23cf5f;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(35, 207, 95, 0.6);
+}
+
+.skills-badge {
+  background-color: #23cf5f;
+  font-weight: 400;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.15rem 0.75rem;
+  margin-right: 5px;
 }

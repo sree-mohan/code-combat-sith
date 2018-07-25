@@ -12,6 +12,7 @@ export class LandingComponent implements OnInit {
   modalRef: BsModalRef;
   fields;
   application: FormGroup;
+  skills = ['Angular', 'React', 'JavaScript', 'NodeJS'];
 
   constructor(
     private modalService: BsModalService,
@@ -33,6 +34,10 @@ export class LandingComponent implements OnInit {
     return true;
   }
 
+  test(data) {
+    console.log('form data:', data);
+  }
+
   initializeForm() {
     this.fields = {
       Name: ['', Validators.required],
@@ -43,7 +48,7 @@ export class LandingComponent implements OnInit {
       JoiningTime: ['', Validators.required],
       Experience: ['', Validators.required],
       Designation: ['', Validators.required],
-      Skills: ['', Validators.required],
+      Skills: [[], Validators.required],
       Education: ['', Validators.required],
       Relocation: [true, Validators.required],
       NoticePeriod: [false, Validators.required],
