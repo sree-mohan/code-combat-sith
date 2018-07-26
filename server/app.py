@@ -11,7 +11,6 @@ app.config['MONGO_DBNAME'] = 'sithDb'
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/sithDb'
 
 mongo = PyMongo(app)
-#connection to application collection
 applications = mongo.db.applications
 openings = mongo.db.openings
 
@@ -48,6 +47,14 @@ def getOneApplication(id):
         else:
                 return jsonify({})
 
+@app.route('/api/openings/<id>/applications')
+def getApplicantsForOpening(id):
+        resp = []
+        for q in applications.find({'JobId': id}):
+                q['_id'] = str(q['_id'])
+                resp.append(q)
+        
+        return jsonify(resp)
 
 @app.route('/api/openings', methods=['GET', 'POST'])
 def openings_method():
