@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
-@import './app/pure-css-checkbox';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
     overflow-x: hidden;
@@ -25,6 +24,11 @@ body {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(35, 207, 95, 0.6);
 }
 
+.custom-file-input:focus {
+  border-color: #23cf5f;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(35, 207, 95, 0.6);
+}
+
 .skills-badge {
   background-color: #23cf5f;
   font-weight: 400;
@@ -32,4 +36,35 @@ body {
   border-radius: 5px;
   padding: 0.15rem 0.75rem;
   margin-right: 5px;
+}
+
+.material-checkbox {
+  position: relative;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.material-checkbox > input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: -1;
+  left: -15px;
+  top: -15px;
+  display: block;
+  margin: 0;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.42);
+  outline: none;
+  opacity: 0;
+  transform: scale(1);
+  -ms-transform: scale(0); /* Graceful degradation for IE */
+  transition: opacity 0.5s, transform 0.5s;
 }

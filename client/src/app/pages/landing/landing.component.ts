@@ -3,6 +3,8 @@ import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
+import { DataService } from '../../services/data.service';
+
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -11,20 +13,28 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LandingComponent implements OnInit {
   modalRef: BsModalRef;
   fields;
+  jobs = [];
   application: FormGroup;
   skills = ['Angular', 'React', 'JavaScript', 'NodeJS'];
 
   constructor(
     private modalService: BsModalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
+    this.dataService.getListOfJobs()
+      .then(res => this.jobs = res);
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>, JobId) {
     this.modalRef = this.modalService.show(template);
-    this.initializeForm();
+    this.initializeForm(JobId);
+  }
+
+  closeModal(template: TemplateRef<any>) {
+    this.modalRef.hide();
   }
 
   onlyDecimalNumberKey(event) {
@@ -34,12 +44,16 @@ export class LandingComponent implements OnInit {
     return true;
   }
 
-  test(data) {
-    console.log('form data:', data);
+  submit(data) {
+    this.dataService.submitApplication(data)
+      .then(res => {
+        this.closeModal();
+      })
   }
 
-  initializeForm() {
+  initializeForm(JobId) {
     this.fields = {
+      JobId: JobId,
       Name: ['', Validators.required],
       Email: ['', Validators.required],
       CurrentCompany: ['', Validators.required],

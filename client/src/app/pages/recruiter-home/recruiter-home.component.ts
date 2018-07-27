@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-recruiter-home',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecruiterHomeComponent implements OnInit {
 
-  constructor() { }
+  jobs = [];
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getListOfJobs()
+    .then(res => this.jobs = res);
   }
 
 }

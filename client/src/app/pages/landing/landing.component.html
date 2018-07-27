@@ -1,16 +1,18 @@
 <div class="landing">
-  <div class="content-container col-5">
-    <h5>Let's</h5>
-    <h5 class="emphasis">Build</h5>
-    <h5 class="emphasis">Great Products</h5>
-    <h5>Together.</h5>
-    <div class="row">
-      <div class="col openings">
-        <a href="#openings">
-          View Current Openings
-          <i class="material-icons">arrow_downward</i>
-        </a>
-      </div>
+  <div class="row">
+    <div class="content-container col-5">
+      <h5>Let's</h5>
+      <h5 class="emphasis">Build</h5>
+      <h5 class="emphasis">Great Products</h5>
+      <h5>Together.</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col openings">
+      <a href="#openings">
+        View Current Openings
+        <i class="material-icons">arrow_downward</i>
+      </a>
     </div>
   </div>
 </div>
@@ -19,14 +21,14 @@
     <div class="content-container col-12">
       <h1>Current Openings</h1>
       <div class="row">
-        <div class="col-3">
+        <div *ngFor="let job of jobs" class="col-3">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title display-4">Software Engineer</h5>
+              <h5 class="card-title display-4">{{job.Designation}}</h5>
               <div class="card-text">
                 <div class="row">
                   <div class="col text-muted">
-                    2 - 3 years
+                    {{job.Experience.min}} - {{job.Experience.max}} years
                   </div>
                 </div>
                 <div class="row mt-10">
@@ -36,7 +38,7 @@
                 </div>
                 <div class="row">
                   <div class="col-12 pull-right">
-                    Angular, React, JavaScript, NodeJS
+                    {{job.Skills.toString()}}
                   </div>
                 </div>
                 <div class="row mt-10">
@@ -46,81 +48,11 @@
                 </div>
                 <div class="row">
                   <div class="col-12 pull-right">
-                    Test Driven Development, Dev-Ops, CI/CD
+                    {{job.AdditionalSkills.toString()}}
                   </div>
                 </div>
               </div>
-              <a (click)="openModal(template)" class="btn btn-primary float-right">APPLY</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title display-4">UI/UX Designer</h5>
-              <div class="card-text">
-                  <div class="row">
-                    <div class="col text-muted">
-                      2 - 3 years
-                    </div>
-                  </div>
-                  <div class="row mt-10">
-                    <div class="col-12 text-muted font-weight-bold">
-                      Need To Know
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12 pull-right">
-                      Photoshop, Illustrator, Adobe XD
-                    </div>
-                  </div>
-                  <div class="row mt-10">
-                    <div class="col-12 text-muted font-weight-bold">
-                      Good To Have
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12 pull-right">
-                      Material Design, Sketch, Flutter, InVision Studio
-                    </div>
-                  </div>
-                </div>
-              <a href="#" class="btn btn-primary float-right">APPLY</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title display-4">Technical Lead</h5>
-              <div class="card-text">
-                  <div class="row">
-                    <div class="col text-muted">
-                      8 - 10 years
-                    </div>
-                  </div>
-                  <div class="row mt-10">
-                    <div class="col-12 text-muted font-weight-bold">
-                      Need To Know
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12 pull-right">
-                      SDLC and Project Management Skills
-                    </div>
-                  </div>
-                  <div class="row mt-10">
-                    <div class="col-12 text-muted font-weight-bold">
-                      Good To Have
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12 pull-right">
-                      JIRA/Kanban Knowledge, Agile Methodologies
-                    </div>
-                  </div>
-                </div>
-              <a href="#" class="btn btn-primary float-right">APPLY</a>
+              <a (click)="openModal(template, job._id)" class="btn btn-primary float-right">APPLY</a>
             </div>
           </div>
         </div>
@@ -158,7 +90,7 @@
               </div>
               <div class="form-group">
                 <label>Years of Experience</label>
-                <input type="text" (keypress)="onlyNumberKey($event)" maxlength="4" class="form-control" formControlName="Experience">
+                <input type="text" (keypress)="onlyDecimalNumberKey($event)" maxlength="4" class="form-control" formControlName="Experience">
               </div>
             </slide>
             <slide>
@@ -185,20 +117,25 @@
                 <input type="text" class="form-control" placeholder="IIT Mumbai" formControlName="Education">
               </div>
               <div class="form-group">
-                <input class="styled-checkbox" [attr.id]="j" type="checkbox" name="statusCheckbox" formControlName="Relocation">
-                <label [attr.for]="j">Are you willing to relocate to Bengaluru?</label>
+                <mat-checkbox formControlName="Relocation">Are you willing to relocate to Bengaluru?</mat-checkbox>
               </div>
               <div class="form-group">
-                <input class="styled-checkbox" [attr.id]="i" type="checkbox" name="statusCheckbox" formControlName="NoticePeriod">
-                <label [attr.for]="i">Are you currently serving your notice period?</label>
+                <mat-checkbox formControlName="NoticePeriod">Are you currently serving your notice period?</mat-checkbox>
               </div>
               <div class="form-group">
                 <label>Duration of Notice Period</label>
                 <input type="text" class="form-control" formControlName="JoiningTime">
               </div>
+              <div class="form-group">
+                <label>Upload your resume</label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="1">
+                  <label class="custom-file-label" for="1">Choose file</label>
+                </div>
+              </div>
             </slide>
           </carousel>
-          <button (click)="test(application.value)" [disabled]="application.invalid" class="btn btn-primary float-right">SUBMIT</button>
+          <button (click)="submit(application.value)" [disabled]="application.invalid" class="btn btn-primary float-right">SUBMIT</button>
         </form>
       </div>
     </div>

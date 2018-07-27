@@ -1,12 +1,31 @@
 <div class="jobs">
-    <div class="row">
-      <div class="content-container col-12">
-        <h1>Software Engineer</h1>
-        <div class="row">
-          <div class="col-12">
-            insert grid here
-          </div>
+  <div class="row">
+    <div class="content-container col-12">
+      <h1>{{applicants[0].Designation}}</h1>
+      <div class="row">
+        <div class="col-10">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Skills</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let applicant of applicants; let i=index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{applicant.Name}}</td>
+                <td>{{applicant.Email}}</td>
+                <td>{{applicant.Skills.toString()}}</td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
+</div>

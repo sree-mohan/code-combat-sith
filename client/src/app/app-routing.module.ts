@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'candidate-home', pathMatch: 'full'},
   {path: 'candidate-home', component: LandingComponent},
   {path: 'recruiter-home', component: RecruiterHomeComponent},
-  {path: 'recruiter-list', component: RecruiterListComponent},
+  {path: 'recruiter-list/:id', component: RecruiterListComponent},
 ];
 
 @NgModule({
