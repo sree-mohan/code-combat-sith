@@ -76,6 +76,10 @@
           <carousel [interval]="0">
             <slide>
               <div class="form-group">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" formControlName="Name">
+                </div>
                 <div class="custom-file">
                   <input (change)="onFileChange($event)" type="file" class="custom-file-input" id="inputGroupFile02">
                   <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">{{fileName}}</label>
@@ -93,7 +97,7 @@
               </div>
               <div class="form-group">
                 <label>Designation</label>
-                <input type="text" class="form-control" placeholder="sam.daniel@mail.com" formControlName="Designation">
+                <input type="text" class="form-control" formControlName="Designation">
               </div>
               <div class="form-group">
                 <label>Current CTC</label>

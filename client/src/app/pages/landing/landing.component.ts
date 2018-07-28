@@ -68,6 +68,7 @@ export class LandingComponent implements OnInit {
   initializeForm(JobId) {
     this.fields = {
       JobId: JobId,
+      Name: ['', Validators.required],
       CurrentCompany: ['', Validators.required],
       TotalPackage: ['', Validators.required],
       ExpectedPackage: ['', Validators.required],

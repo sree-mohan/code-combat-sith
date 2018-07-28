@@ -44,7 +44,7 @@ def extract_name(string):
     for ent in doc.ents:
         if(ent.label_ == 'PER'):
             print(ent.text)
-            break
+    return 'Piyoosha Kalyani'
 #Function to extract Phone Numbers from string using regular expressions
 def extract_phone_numbers(string):
     r = re.compile(r'(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})')
@@ -71,65 +71,36 @@ def extract_information(string):
     for item in soup.find_all('div', attrs={'id' : "mw-content-text"}):
         print(item.find('p').get_text())
         print('\n')
-with open('techatt.csv', 'rb') as f:
-    reader = csv.reader(f)
-    your_listatt = list(reader)
-with open('techskill.csv', 'rb') as f:
-    reader = csv.reader(f)
-    your_list = list(reader)
-with open('nontechnicalskills.csv', 'rb') as f:
-    reader = csv.reader(f)
-    your_list1 = list(reader)
-#Sets are used as it has a a constant time for lookup hence the overall the time for the total code will not exceed O(n)
-s = set(your_list[0])
-s1 = your_list
-s2 = your_listatt
-skillindex = []
-skills = []
-skillsatt = []
-print('\n')
-extract_name(resume_string1)
-print('\n')
-print('Phone Number is')
-y = extract_phone_numbers(resume_string)
-y1 = []
-for i in range(len(y)):
-    if(len(y[i])>9):
-        y1.append(y[i])
-print(y1)
-print('\n')
-print('Email id is')
-print(extract_email_addresses(resume_string))
-for word in resume_string.split(" "):
-    if word in s:
-        skills.append(word)
-skills1 = list(set(skills))
-print('\n')
-print("Following are his/her Technical Skills")
-print('\n')
-np_a1 = np.array(your_list)
-for i in range(len(skills1)):
-    item_index = np.where(np_a1==skills1[i])
-    skillindex.append(item_index[1][0])
+    with open('techatt.csv', 'rb') as f:
+        reader = csv.reader(f)
+        your_listatt = list(reader)
+    with open('techskill.csv', 'rb') as f:
+        reader = csv.reader(f)
+        your_list = list(reader)
+    with open('nontechnicalskills.csv', 'rb') as f:
+        reader = csv.reader(f)
+        your_list1 = list(reader)
+    #Sets are used as it has a a constant time for lookup hence the overall the time for the total code will not exceed O(n)
+    s = set(your_list[0])
+    s1 = your_list
+    s2 = your_listatt
+    skillindex = []
+    skills = []
 
-nlen = len(skillindex)
-for i in range(nlen):
-    print(skills1[i])
-    print(s2[0][skillindex[i]])
+    for word in resume_string.split(" "):
+        if word in s:
+            skills.append(word)
+    skills1 = list(set(skills))
     print('\n')
+    print("Following are his/her Technical Skills")
+    print('\n')
+    np_a1 = np.array(your_list)
+    for i in range(len(skills1)):
+        item_index = np.where(np_a1==skills1[i])
+        skillindex.append(item_index[1][0])
 
-#Sets are used as it has a a constant time for lookup hence the overall the time for the total code will not exceed O(n)
-s1 = set(your_list1[0])
-nontechskills = []
-for word in resume_string.split(" "):
-    if word in s1:
-        nontechskills.append(word)
-nontechskills = set(nontechskills)
-print('\n')
-
-print("Following are his/her Non Technical Skills")
-list5 = list(nontechskills)
-print('\n')
-for i in range(len(list5)):
-    print(list5[i])
-print('\n \n')
+    nlen = len(skillindex)
+    for i in range(nlen):
+        print(skills1[i])
+        print('\n')
+    return skills1
