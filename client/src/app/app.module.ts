@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CarouselModule, ModalModule } from 'ngx-bootstrap';
 import { MatCheckboxModule } from '@angular/material';
-import { TypeaheadModule } from 'ngx-type-ahead';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +35,6 @@ import { RecruiterListComponent } from './pages/recruiter-list/recruiter-list.co
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    TypeaheadModule,
     ModalModule.forRoot(),
     CarouselModule.forRoot(),
     AppRoutingModule

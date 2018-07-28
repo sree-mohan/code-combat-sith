@@ -6,18 +6,31 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class DataService {
-
-  END_POINT = 'http://10.0.1.224:5000';
+  END_POINT = 'http://localhost:5000';
 
   constructor(public http: Http, public router: Router) {}
+
+  httpOptions = {
+    headers: new Headers({
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'authkey',
+      userid: '1',
+    }),
+  };
 
   // Submit an application
   submitApplication(data) {
     return this.http
-      .post(
-        `${this.END_POINT}/api/apply`,
-        data
-      )
+      .post(`${this.END_POINT}/api/apply`, data, this.httpOptions)
+      .toPromise()
+      .then((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+
+  // Upload a resume
+  uploadResume(resume, id) {
+    return this.http
+      .post(`${this.END_POINT}/api/upload-resume/${id}`, resume, this.httpOptions)
       .toPromise()
       .then((res: Response) => res.json())
       .catch(this.handleError);
@@ -25,9 +38,7 @@ export class DataService {
 
   getApplicantsForJob(JobId) {
     return this.http
-      .get(
-        `${this.END_POINT}/api/openings/${JobId}/applications`
-      )
+      .get(`${this.END_POINT}/api/openings/${JobId}/applications`)
       .toPromise()
       .then((res: Response) => res.json())
       .catch(this.handleError);
@@ -36,12 +47,10 @@ export class DataService {
   // Get list of jobs
   getListOfJobs() {
     return this.http
-      .get(
-        `${this.END_POINT}/api/openings`
-      )
+      .get(`${this.END_POINT}/api/openings`)
       .toPromise()
       .then((res: Response) => res.json())
-      .catch(this.handleError);    
+      .catch(this.handleError);
   }
 
   public extractData(res: Response) {

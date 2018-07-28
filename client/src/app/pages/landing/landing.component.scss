@@ -103,3 +103,8 @@
 .mt-10 {
     margin-top: 10px !important;
 }
+
+.custom-file-label::after {
+    background: #23cf5f;
+    color: #fff;
+}

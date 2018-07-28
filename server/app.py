@@ -1,8 +1,10 @@
+import os
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from error import InvalidUsage
 from flask_cors import CORS
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 CORS(app)
@@ -10,10 +12,38 @@ CORS(app)
 app.config['MONGO_DBNAME'] = 'sithDb'
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/sithDb'
 
+#Resume upload config
+UPLOAD_FOLDER = './'
+ALLOWED_EXTENSIONS = set(['pdf'])
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 mongo = PyMongo(app)
 applications = mongo.db.applications
 openings = mongo.db.openings
 
+#Upload resume PDF
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/api/upload-resume/<id>', methods=['POST'])
+def upload_file(id):
+        f = request.files['file']
+        print(request.files)
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], (secure_filename('resume.pdf'))))
+        file_contents()
+        return 'file uploaded successfully'
+
+def file_contents():
+        import resumeparser
+        myString = resumeparser.convert('resume.pdf')
+        #name = resumeparser.extract_name(myString)
+        phone = resumeparser.extract_phone_numbers(myString)
+        email = resumeparser.extract_email_addresses(myString)
+        resumeparser.extract_information(myString)
+        print('in file contents')
+        print(email, phone)
 
 @app.route('/api/applications', methods=['GET'])
 def test():

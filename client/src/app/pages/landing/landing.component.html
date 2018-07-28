@@ -76,17 +76,10 @@
           <carousel [interval]="0">
             <slide>
               <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control" placeholder="Sam Daniel" formControlName="Name">
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="text" class="form-control" placeholder="sam.daniel@mail.com" formControlName="Email">
-              </div>
-              <div class="form-group">
-                <label>Skills</label>
-                <type-ahead [custom]="false" [multi]="true" [settings]="{tagClass: 'skills-badge'}" class="form-control" formControlName="Skills"
-                  [suggestions]="skills"></type-ahead>
+                <div class="custom-file">
+                  <input (change)="onFileChange($event)" type="file" class="custom-file-input" id="inputGroupFile02">
+                  <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">{{fileName}}</label>
+                </div>
               </div>
               <div class="form-group">
                 <label>Years of Experience</label>
@@ -126,16 +119,9 @@
                 <label>Duration of Notice Period</label>
                 <input type="text" class="form-control" formControlName="JoiningTime">
               </div>
-              <div class="form-group">
-                <label>Upload your resume</label>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="1">
-                  <label class="custom-file-label" for="1">Choose file</label>
-                </div>
-              </div>
             </slide>
           </carousel>
-          <button (click)="submit(application.value)" [disabled]="application.invalid" class="btn btn-primary float-right">SUBMIT</button>
+          <button (click)="submit(application.value)" class="btn btn-primary float-right">SUBMIT</button>
         </form>
       </div>
     </div>
