@@ -28,7 +28,7 @@ mccabe==0.6.1
 msgpack==0.5.6
 msgpack-numpy==0.4.3.1
 murmurhash==0.28.0
-numpy==1.15.0
+numpy==1.22.0
 pathlib==1.0.1
 pdfminer==20140328
 pdfquery==0.4.3
